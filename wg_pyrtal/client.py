@@ -7,11 +7,6 @@ from .endpoints.Users import Users
 from .endpoints.Provisioning import Provisioning
 
 class WGPortal:
-    interfaces: "Interfaces"
-    metrics: "Metrics"
-    peers: "Peers"
-    users: "Users"
-    provisioning: "Provisioning"
     def __init__(self, server_ip, server_port, username, password):
         self.server_ip = server_ip
         self.server_port = server_port
