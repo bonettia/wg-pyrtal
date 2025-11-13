@@ -17,7 +17,7 @@ pip install .
 
 from wg_pyrtal.client import WGPortal
 
-client = WGPortal(<server-ip-address>, 8080, "user@example.com", "API_KEY")
+client = WGPortal(-server-ip-address-, 8080, "user@example.com", "API_KEY")
 
 ### List all interfaces
 interfaces = client.interfaces.all()\
