@@ -3,11 +3,11 @@ class Interfaces:
     def __init__(self, client):
         self.client = client
 
-    def all(self) -> dict:
+    def all(self) ->  list[dict]:
         '''
         Retrieve all interfaces.
         Returns:
-            Dictionary notation of all interfaces.
+            List of dictionary notation of all interfaces.
         '''
         response = self.client.request("GET", "interface/all")
         return response
@@ -74,9 +74,9 @@ class Interfaces:
             raise ValueError("mode must be one of 'client', 'server', or 'any'")
         #if keys are not provided, generate new keypair
         if privatekey is None and publickey is None:
-            preparepeer = self.prepare()
-            privatekey = preparepeer["PrivateKey"]
-            publickey = preparepeer["PublicKey"]
+            prepareinterface = self.prepare()
+            privatekey = prepareinterface["PrivateKey"]
+            publickey = prepareinterface["PublicKey"]
         data = {
             "Identifier": id,
             "Mode": mode,

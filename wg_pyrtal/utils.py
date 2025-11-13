@@ -1,5 +1,9 @@
 import urllib.parse
 
+class APIError(Exception):
+    def __init__(self, status, message):
+        super().__init__(f"API Error {status}: {message}")
+
 def format_bytes(size):
     # 2**10 = 1024
     power = 2**10

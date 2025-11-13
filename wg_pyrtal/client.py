@@ -1,5 +1,5 @@
 import base64, requests, json
-from .utils import urlparse
+from .utils import urlparse, APIError
 from .endpoints.Interfaces import Interfaces
 from .endpoints.Metrics import Metrics
 from .endpoints.Peers import Peers
@@ -28,6 +28,8 @@ class WGPortal:
         url = f"http://{self.server_ip}:{self.server_port}/api/v1/{endpoint}"
         if method == "GET":
             response = requests.get(url, headers=self.headers, verify=False, timeout=10)
+            if "?PeerId=" in url:
+                return response.content
         elif method == "POST":
             response = requests.post(url, json=data, headers=self.headers, verify=False, timeout=10)
         elif method == "DELETE":
@@ -40,6 +42,8 @@ class WGPortal:
             response = requests.put(url, json=data, headers=self.headers, verify=False, timeout=10)
         else:
             raise ValueError("Unsupported HTTP method")
+        if not response.ok:
+            raise APIError(response.status_code, response.text)
         return json.loads(response.content)
     
     def urlparse(self, value: str) -> str:
