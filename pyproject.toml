@@ -15,9 +15,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project.urls]
-Homepage = "https://github.com/Beerhardt/wg-pyrtal"
-Repository = "https://github.com/Beerhardt/wg-pyrtal"
-Issues = "https://github.com/Beerhardt/wg-pyrtal/issues"
+Homepage = "https://github.com/bonettia/wg-pyrtal"
+Repository = "https://github.com/bonettia/wg-pyrtal"
+Issues = "https://github.com/bonettia/wg-pyrtal/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
